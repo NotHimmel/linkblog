@@ -1,25 +1,22 @@
 {{ define "main" }}
-    <div class="page-title">
-        <h1>{{ .Title }}</h1>
-    </div>
-    <div class="content">
-        {{ with .Content -}}{{ . }}{{ end }}
-    </div>
-    {{- range (.Pages.ByParam "shot_date").Reverse }}
-        <section class="section tdln">
-            <a href="{{ .RelPermalink }}" class="section-title">
-                <h2>{{ .Title }}</h2>
-            </a>
-            <a href="{{ .RelPermalink }}" class="album-row">
-                {{ with .Resources.Match "*thumbnail*" -}}
-                    {{ range . -}}
-                        {{ $thumbnail := .Resize "300x webp" }}
-                        <img class="img-tile" loading="lazy" src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }} Thumbnail" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}">
-                    {{- end }}
-                {{ else }}
-                    <p>No thumbnail available.</p>
-                {{- end }}
-            </a>
-        </section>
-    {{ end -}}
+		<div class="page-title">
+			<h1>{{.Title}}</h1>
+		</div>
+		<div class="content">
+			{{ with .Content -}}{{ . }}{{ end }}
+		</div>
+		{{- range (.Pages.ByParam "shot_date").Reverse}}
+		<section class="section tdln">
+			<a href="{{ .RelPermalink }}" class="section-title">
+				<h2>{{.Title}}</h2>
+			</a>
+			<a href="{{ .RelPermalink }}" class="album-row">
+				{{ with .Resources.Match "*thumbnail*" -}}
+				{{ range . -}}
+				<img class="img-tile" loading="lazy" src="{{.RelPermalink}}" alt="thumbnail" width="{{.Width}}" height="{{.Height}}">
+				{{- end }}
+				{{- end }}
+			</a>
+		</section>
+		{{ end -}}
 {{- end }}
