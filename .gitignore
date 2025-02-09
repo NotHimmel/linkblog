@@ -2,8 +2,7 @@
 .hugo_build.lock
 public/
 resources/
-content/
-content
 content-static/
 content-static
 hugo.exe
+.stfolder/syncthing-folder-2553da.txt
